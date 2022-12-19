@@ -34,15 +34,15 @@ public final class SMServerConfig {
     public static class Server {
         private Server(final ForgeConfigSpec.Builder builder) {
             GENERAL = new GeneralConfig(builder);
-            MOBS = new Mobs(builder);
+            ENTITIES = new Entities(builder);
         }
 
         public final GeneralConfig GENERAL;
-        public final Mobs MOBS;
+        public final Entities ENTITIES;
     }
 
-    public static class Mobs {
-        Mobs(final ForgeConfigSpec.Builder builder) {
+    public static class Entities {
+        Entities(final ForgeConfigSpec.Builder builder) {
             builder.push("mobs");
             WEREWOLF = new Werewolf(builder);
             builder.pop();
@@ -58,7 +58,7 @@ public final class SMServerConfig {
                         .define("enable_werewolf", true);
                 this.werewolfSpawnWeight = builder.comment("Spawn Weight for werewolves")
                         .translation(LANG_PREFIX + "spawn_weight_werewolf")
-                        .defineInRange("spawn_weight_werewolf", 1,0,150);
+                        .defineInRange("spawn_weight_werewolf", 140,0,150);
                 builder.pop();
             }
 
