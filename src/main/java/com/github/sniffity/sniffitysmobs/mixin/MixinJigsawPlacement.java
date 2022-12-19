@@ -29,7 +29,7 @@ public class MixinJigsawPlacement {
 
         boolean hasWolfShrine = pieces.stream()
                 .map(piece -> ((PoolElementStructurePiece) piece).getElement().toString())
-                .anyMatch(pieceName -> pieceName.contains("sniffitysmobs:") && pieceName.contains("/wolf_shrine"));
+                .anyMatch(pieceName -> pieceName.contains("sniffitysmobs:") && pieceName.contains("/wolf_shrine_piece"));
 
         boolean hasWerewolfVillager = pieces.stream()
                 .map(piece -> ((PoolElementStructurePiece) piece).getElement().toString())
@@ -39,7 +39,7 @@ public class MixinJigsawPlacement {
         if (hasWolfShrine) {
             List<StructurePoolElement> adjustedPool = pool.getShuffledTemplates(rand).stream().filter(piece -> {
                 String pieceName = piece.toString();
-                return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/wolf_shrine");
+                return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/wolf_shrine_piece");
             }).collect(Collectors.toList());
             //adjustedPool: Pool without Wolf Shrine
 
@@ -74,7 +74,12 @@ public class MixinJigsawPlacement {
                 }).collect(Collectors.toList());
                 return adjustedPool;
             }
+        }  else {
+            //We have no WOlf Shrine, remove all werewolf Villagers
+            return pool.getShuffledTemplates(rand).stream().filter(piece -> {
+                String pieceName = piece.toString();
+                return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/werewolf_villager");
+            }).collect(Collectors.toList());
         }
-        return pool.getShuffledTemplates(rand);
     }
 }

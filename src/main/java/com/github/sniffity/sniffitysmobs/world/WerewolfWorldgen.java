@@ -29,15 +29,13 @@ import java.util.Random;
  */
 
 public class WerewolfWorldgen {
-    private static final ResourceLocation wolfShrineStructure = new ResourceLocation("sniffitysmobs", "village/wolf_shrine");
-    private static final ResourceLocation werewolfVillager = new ResourceLocation("sniffitysmobs", "village/werwolf_villager_");
     private static final String[] VILLAGE_TYPES = new String[]{"plains", "savanna", "taiga","snowy","desert"};
 
     public static void setupVillageWorldGen() {
         if (SMServerConfig.SERVER.MOBS.WEREWOLF.enableWerewolf.get()) {
             for (String type : VILLAGE_TYPES) {
-                addToPool(new ResourceLocation("village/" + type + "/houses"),wolfShrineStructure, SMServerConfig.SERVER.MOBS.WEREWOLF.werewolfSpawnWeight.get());
-                addToPool(new ResourceLocation("village/" + type + "/villagers"),new ResourceLocation(werewolfVillager+type), 1);
+                addToPool(new ResourceLocation("village/" + type + "/houses"),new ResourceLocation("sniffitysmobs", "village/wolf_shrine_houses_"+type), SMServerConfig.SERVER.MOBS.WEREWOLF.werewolfSpawnWeight.get());
+                addToPool(new ResourceLocation("village/" + type + "/villagers"),new ResourceLocation("sniffitysmobs", "village/werewolf_villager_"+type), 1);
             }
         }
     }
@@ -59,6 +57,7 @@ public class WerewolfWorldgen {
         newPieces.put(MixinSingleJigsawAccess.construct(
                 Either.left(toAdd), ProcessorLists.EMPTY, StructureTemplatePool.Projection.RIGID
         ), weight);
+
         List<Pair<StructurePoolElement, Integer>> newPieceList = newPieces.object2IntEntrySet().stream()
                 .map(e -> Pair.of(e.getKey(), e.getIntValue()))
                 .collect(Collectors.toList());
