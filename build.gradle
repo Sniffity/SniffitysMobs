@@ -7,11 +7,13 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: "org.spongepowered.mixin"
 
 
 version = "${mod_version}-${minecraft_version}"
@@ -26,10 +28,11 @@ sourceSets.main.resources {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.86'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.18:3.0.57')
     compileOnly fg.deobf("mezz.jei:jei-1.18.2-forge-api:10.2.1.283")
     runtimeOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.2.1.283")
-    runtimeOnly fg.deobf("curse.maven:theoneprobe-245211:3965693")
+    runtimeOnly fg.deobf("curse.maven:theoneprobe-245211:3965688")
 }
 
 repositories {
@@ -67,7 +70,6 @@ minecraft {
         data {
             workingDirectory project.file('run')
             args '--mod', 'sniffitysmobs', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
             mods {
                 sniffitysmobs {
                     source sourceSets.main
@@ -103,10 +105,16 @@ processResources {
     }
 }
 
+mixin {
+    add sourceSets.main, 'mixins.sniffitysmobs.refmap.json'
+    config 'mixins.sniffitysmobs.json'
+    debug.verbose = true
+}
+
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "sniffitysmobs",
+                "Specification-Title"     : "Sniffity's Mods",
                 "Specification-Vendor"    : "Sniffity",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : "sniffitysmobs",
