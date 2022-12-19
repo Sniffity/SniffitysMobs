@@ -1,23 +1,19 @@
 package com.github.sniffity.sniffitysmobs;
 
+import com.github.sniffity.sniffitysmobs.config.SMServerConfig;
+import com.github.sniffity.sniffitysmobs.registry.SMBlocks;
+import com.github.sniffity.sniffitysmobs.registry.SMItems;
+import com.github.sniffity.sniffitysmobs.world.WerewolfWorldgen;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
-
-import java.util.stream.Collectors;
 
 @Mod(SniffitysMobs.MODID)
 public class SniffitysMobs
@@ -30,13 +26,19 @@ public class SniffitysMobs
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         modBus.addListener(this::commonSetup);
 
+        SMItems.ITEMS.register(modBus);
+        SMBlocks.BLOCKS.register(modBus);
+
         GeckoLib.initialize();
         forgeBus.register(this);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SMServerConfig.SERVER_CONFIG, "sniffitysmobs-server-config.toml");
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-
+            WerewolfWorldgen.setupVillageWorldGen();
         });
     }
 
