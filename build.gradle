@@ -33,7 +33,9 @@ dependencies {
 }
 
 repositories {
-    maven {url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven {url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven {url "https://cursemaven.com"}
+    maven {url "https://dvs1.progwml6.com/files/maven/"}
 }
 
 minecraft {
