@@ -3,7 +3,6 @@ package com.github.sniffity.sniffitysmobs;
 import com.github.sniffity.sniffitysmobs.config.SMServerConfig;
 import com.github.sniffity.sniffitysmobs.registry.SMBlocks;
 import com.github.sniffity.sniffitysmobs.registry.SMItems;
-import com.github.sniffity.sniffitysmobs.world.WerewolfWorldgen;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,7 +37,6 @@ public class SniffitysMobs
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            WerewolfWorldgen.setupVillageWorldGen();
         });
     }
 
