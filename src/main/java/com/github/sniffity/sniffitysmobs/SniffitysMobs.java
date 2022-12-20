@@ -1,6 +1,7 @@
 package com.github.sniffity.sniffitysmobs;
 
 import com.github.sniffity.sniffitysmobs.config.SMServerConfig;
+import com.github.sniffity.sniffitysmobs.registry.SMBlockEntities;
 import com.github.sniffity.sniffitysmobs.registry.SMBlocks;
 import com.github.sniffity.sniffitysmobs.registry.SMItems;
 import com.github.sniffity.sniffitysmobs.worldgen.WolfShrineWorldgen;
@@ -18,6 +19,11 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(SniffitysMobs.MODID)
 public class SniffitysMobs
 {
+    //ToDo: Wolf Shrine Structures
+    //ToDo: Wolfsbane flowers
+    //ToDo: Bloodthirst effect, add to Villagers
+    //ToDo: Silver poker items
+    //ToDo: Event to add bloodthirst counter
     public static final String MODID = "sniffitysmobs";
     private static final Logger LOGGER = LogUtils.getLogger();
     public SniffitysMobs()
@@ -27,6 +33,7 @@ public class SniffitysMobs
         modBus.addListener(this::commonSetup);
 
         SMItems.ITEMS.register(modBus);
+        SMBlockEntities.BLOCK_ENTITIES.register(modBus);
         SMBlocks.BLOCKS.register(modBus);
 
         GeckoLib.initialize();
