@@ -1,6 +1,8 @@
 package com.github.sniffity.sniffitysmobs;
 
 import com.github.sniffity.sniffitysmobs.config.SMServerConfig;
+import com.github.sniffity.sniffitysmobs.events.ClientEvents;
+import com.github.sniffity.sniffitysmobs.events.ServerEvents;
 import com.github.sniffity.sniffitysmobs.registry.SMBlockEntities;
 import com.github.sniffity.sniffitysmobs.registry.SMBlocks;
 import com.github.sniffity.sniffitysmobs.registry.SMItems;
@@ -19,7 +21,9 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(SniffitysMobs.MODID)
 public class SniffitysMobs
 {
+    //ToDo: Logoc + packmcmeta
     //ToDo: Wolf Shrine Structures
+    //ToDo: set NBT to true
     //ToDo: Wolfsbane flowers
     //ToDo: Bloodthirst effect, add to Villagers
     //ToDo: Silver poker items
@@ -30,6 +34,10 @@ public class SniffitysMobs
     {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+
+        ClientEvents.setup();
+        ServerEvents.setup();
+
         modBus.addListener(this::commonSetup);
 
         SMItems.ITEMS.register(modBus);

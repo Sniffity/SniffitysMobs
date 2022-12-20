@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "sniffitysmobs:block/wolfsbane_top"
+  }
+}

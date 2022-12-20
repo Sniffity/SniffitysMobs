@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "sniffitysmobs:block/wolfsbane_top"
+  }
+}
