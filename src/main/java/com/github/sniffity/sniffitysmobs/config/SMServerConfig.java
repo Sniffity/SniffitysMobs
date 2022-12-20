@@ -43,7 +43,7 @@ public final class SMServerConfig {
 
     public static class Entities {
         Entities(final ForgeConfigSpec.Builder builder) {
-            builder.push("mobs");
+            builder.push("entities");
             WEREWOLF = new Werewolf(builder);
             builder.pop();
         }
@@ -56,14 +56,39 @@ public final class SMServerConfig {
                 this.enableWerewolf = builder.comment("Whether to enable werewolves or not")
                         .translation(LANG_PREFIX + "enable_werewolf")
                         .define("enable_werewolf", true);
-                this.werewolfSpawnWeight = builder.comment("Spawn Weight for werewolves")
-                        .translation(LANG_PREFIX + "spawn_weight_werewolf")
-                        .defineInRange("spawn_weight_werewolf", 140,0,150);
+                this.forceMinWolfShrine = builder.comment("Whether to force at least one Wolf Shrine per village")
+                        .translation(LANG_PREFIX + "force_min_wolfshrine")
+                        .define("force_min_wolfshrine", false);
+                this.forceMaxWolfShrine = builder.comment("Whether to force at most one Wolf Shrine per village")
+                        .translation(LANG_PREFIX + "force_max_wolfshrine")
+                        .define("force_max_wolfshrine", true);
+                this.wolfShrineSpawnWeightPlains = builder.comment("Spawn Weight for Wolf Shrines in Plains Villages")
+                        .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_plains")
+                        .defineInRange("spawn_weight_wolf_shrine_plains", 1,1,150);
+                this.wolfShrineSpawnWeightTaiga = builder.comment("Spawn Weight for Wolf Shrines in Taiga Villages")
+                        .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_taiga")
+                        .defineInRange("spawn_weight_wolf_shrine_taiga", 1,1,150);
+                this.wolfShrineSpawnWeightSavanna = builder.comment("Spawn Weight for Wolf Shrines in Savanna Villages")
+                        .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_savanna")
+                        .defineInRange("spawn_weight_wolf_shrine_savanna", 1,1,150);
+                this.wolfShrineSpawnWeightDesert = builder.comment("Spawn Weight for Wolf Shrines in Desert Villages")
+                        .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_desert")
+                        .defineInRange("spawn_weight_wolf_shrine_desert", 1,1,150);
+                this.wolfShrineSpawnWeightSnowy = builder.comment("Spawn Weight for Wolf Shrines in Snowy Villages")
+                        .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_snowy")
+                        .defineInRange("spawn_weight_wolf_shrine_snowy", 1,1,150);
                 builder.pop();
             }
 
             public final ForgeConfigSpec.BooleanValue enableWerewolf;
-            public final ForgeConfigSpec.IntValue werewolfSpawnWeight;
+            public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightPlains;
+            public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightTaiga;
+            public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightSavanna;
+            public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightDesert;
+            public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightSnowy;
+            public final ForgeConfigSpec.BooleanValue forceMinWolfShrine;
+            public final ForgeConfigSpec.BooleanValue forceMaxWolfShrine;
+
         }
     }
 }

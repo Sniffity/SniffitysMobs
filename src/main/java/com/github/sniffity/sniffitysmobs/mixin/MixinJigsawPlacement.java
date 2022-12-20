@@ -26,60 +26,31 @@ public class MixinJigsawPlacement {
     @Redirect(method = "tryPlacingChildren(Lnet/minecraft/world/level/levelgen/structure/PoolElementStructurePiece;Lorg/apache/commons/lang3/mutable/MutableObject;IZLnet/minecraft/world/level/LevelHeightAccessor;)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool;getShuffledTemplates(Ljava/util/Random;)Ljava/util/List;"))
     private List<StructurePoolElement> getShuffledTemplates(StructureTemplatePool pool, Random rand) {
-
         boolean hasWolfShrine = pieces.stream()
                 .map(piece -> ((PoolElementStructurePiece) piece).getElement().toString())
-                .anyMatch(pieceName -> pieceName.contains("sniffitysmobs:") && pieceName.contains("/wolf_shrine_piece"));
-
-        boolean hasWerewolfVillager = pieces.stream()
-                .map(piece -> ((PoolElementStructurePiece) piece).getElement().toString())
-                .anyMatch(pieceName -> pieceName.contains("sniffitysmobs:") && pieceName.contains("/werewolf_villager"));
-
-        //If the Village already has a Wolf Shrine, remove the Wolf Shrine from the pool, ensuring a maximum of one Wolf Shrine per village
-        if (hasWolfShrine) {
-            List<StructurePoolElement> adjustedPool = pool.getShuffledTemplates(rand).stream().filter(piece -> {
-                String pieceName = piece.toString();
-                return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/wolf_shrine_piece");
-            }).collect(Collectors.toList());
-            //adjustedPool: Pool without Wolf Shrine
-
-            //We have a Wolf Shrine, now proceed to check if we have a Werewolf Villager..
-
-            //If we do not have a Werewolf Villager yet...
-            if (!hasWerewolfVillager) {
-                //Since we already have one Wolf Shrine, we proceed to ensure at least one Werewolf Villager gets added...
-                //We do so by finding the Werewolf Villager piece and placing it at the front of the line...
-                //Instantiate the werewolfVillager element...
-                StructurePoolElement werewolfVillager = null;
-                //Instantiate the resultingPool
-                List<StructurePoolElement> resultPool = new ArrayList<>();
-                //The original Pool will be the pool with the wolfShrine removed..
-                for (StructurePoolElement piece : adjustedPool) {
-                    String pieceName = piece.toString();
-                    if (pieceName.contains("sniffitysmobs:") && pieceName.contains("/werewolf_villager")) {
-                        werewolfVillager = piece;
-                    } else {
-                        resultPool.add(piece);
-                    }
-                }
-                if (werewolfVillager != null) {
-                    resultPool.add(0,werewolfVillager);
-                }
-                return resultPool;
-            } else {
-                //We already have a Werewolf Villager, adjust the initial pool, removing all Werewolf Villager
-                adjustedPool = pool.getShuffledTemplates(rand).stream().filter(piece -> {
-                    String pieceName = piece.toString();
-                    return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/werewolf_villager");
-                }).collect(Collectors.toList());
-                return adjustedPool;
-            }
-        }  else {
-            //We have no WOlf Shrine, remove all werewolf Villagers
+                .anyMatch(pieceName -> pieceName.contains("sniffitysmobs:") && pieceName.contains("/wolf_shrine"));
+        if (hasWolfShrine && SMServerConfig.SERVER.ENTITIES.WEREWOLF.forceMaxWolfShrine.get()) {
             return pool.getShuffledTemplates(rand).stream().filter(piece -> {
                 String pieceName = piece.toString();
-                return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/werewolf_villager");
+                return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/wolf_shrine");
             }).collect(Collectors.toList());
+        } else if (SMServerConfig.SERVER.ENTITIES.WEREWOLF.forceMinWolfShrine.get()) {
+            StructurePoolElement wolfsbane = null;
+            List<StructurePoolElement> original = pool.getShuffledTemplates(rand);
+            List<StructurePoolElement> result = new ArrayList<>();
+            for (StructurePoolElement piece : original) {
+                String pieceName = piece.toString();
+                if (pieceName.contains("sniffitysmobs:") && pieceName.contains("/wolf_shrine")) {
+                    wolfsbane = piece;
+                } else {
+                    result.add(piece);
+                }
+            }
+            if (wolfsbane != null) {
+                result.add(0, wolfsbane);
+            }
+            return result;
         }
+        return pool.getShuffledTemplates(rand);
     }
 }

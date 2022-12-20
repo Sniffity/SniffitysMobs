@@ -5,7 +5,9 @@
   "minVersion": "0.8",
   "refmap": "mixins.sniffitysmobs.refmap.json",
   "mixins": [
-    "MixinJigsawPlacement"
+    "MixinJigsawPlacement",
+    "MixinSingleJigsawAccess"
+
   ],
   "injectors": {
     "defaultRequire": 1
