@@ -8,5 +8,9 @@
   "effect.panthalassa.bloodthirst": "Bloodrthirst",
   "sniffitysmobs.bloodthirst.message.3": "As the Villager takes damage, you feel an ominous presence becoming stronger...",
   "sniffitysmobs.bloodthirst.message.7": "Be careful... Something is watching... You can feel it closer now... Stronger, even...",
-  "sniffitysmobs.bloodthirst.message.10": "Tonight, it comes for you..."
+  "sniffitysmobs.bloodthirst.message.10": "Tonight, it comes for you...",
+  "sniffitysmobs.werewolf.transform": "It comes for you...",
+  "sniffitysmobs.subtitle.werewolf.villager1": "Distant snarling...",
+  "sniffitysmobs.subtitle.werewolf.villager2": "Distant growling...",
+  "sniffitysmobs.subtitle.werewolf.villager3": "Distant howling..."
 }

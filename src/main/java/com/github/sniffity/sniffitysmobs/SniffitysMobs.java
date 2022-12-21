@@ -3,10 +3,7 @@ package com.github.sniffity.sniffitysmobs;
 import com.github.sniffity.sniffitysmobs.config.SMServerConfig;
 import com.github.sniffity.sniffitysmobs.events.ClientEvents;
 import com.github.sniffity.sniffitysmobs.events.ServerEvents;
-import com.github.sniffity.sniffitysmobs.registry.SMBlockEntities;
-import com.github.sniffity.sniffitysmobs.registry.SMBlocks;
-import com.github.sniffity.sniffitysmobs.registry.SMEffects;
-import com.github.sniffity.sniffitysmobs.registry.SMItems;
+import com.github.sniffity.sniffitysmobs.registry.*;
 import com.github.sniffity.sniffitysmobs.worldgen.WolfShrineWorldgen;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,10 +24,15 @@ public class SniffitysMobs
         //ToDo: set NBT to true in structure file
         //ToDo: Loot? Books, etc?
 
-
     //ToDo: Event to add bloodthirst counter
         //ToDo: Villager damage +1, Villager Poke +2, Villager death +4
         //ToDo: Message on bloodthirst reaching a threshold + sound
+
+    //ToDo: Silver needle item
+    //ToDo: Tooltip
+    //ToDo: Recipe
+
+    //ToDo: Add Entity, placeholder...
 
     //ToDo: transform conditions --
     //Hit with silver needle
@@ -39,18 +41,10 @@ public class SniffitysMobs
     //Bloodthirst > 10 stacks && moon
 
 
-    //ToDo
 
-    //ToDo: Silver poker item
-        //ToDo: Tooltip
-        //ToDo: Recipe
 
     //ToDo: If Werewolf is transformed, handle stacks on Werewolf Entity....
-
-
-
-
-
+        //ToDo: handle transform sound on FinalizeSpawn
     //ToDo: Boss bar, displays Bloodthirst stacks
     public static final String MODID = "sniffitysmobs";
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -68,6 +62,7 @@ public class SniffitysMobs
         SMBlockEntities.BLOCK_ENTITIES.register(modBus);
         SMBlocks.BLOCKS.register(modBus);
         SMEffects.EFFECTS.register(modBus);
+        SMSoundEvents.SOUND_EVENTS.register(modBus);
 
         GeckoLib.initialize();
         forgeBus.register(this);

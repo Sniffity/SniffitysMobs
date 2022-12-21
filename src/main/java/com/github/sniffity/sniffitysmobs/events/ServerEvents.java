@@ -1,15 +1,14 @@
 package com.github.sniffity.sniffitysmobs.events;
 
-import com.github.sniffity.sniffitysmobs.effect.EffectBloodthirst;
 import com.github.sniffity.sniffitysmobs.entity.ai.goal.GoalAvoidWerewolfVillager;
 import com.github.sniffity.sniffitysmobs.entity.ai.goal.GoalLookAtWerewolfVillager;
 import com.github.sniffity.sniffitysmobs.registry.SMEffects;
 import com.github.sniffity.sniffitysmobs.registry.SMItems;
+import com.github.sniffity.sniffitysmobs.registry.SMSoundEvents;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.Cat;
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -65,10 +63,9 @@ public class ServerEvents {
         if (entity instanceof Villager && source instanceof Player) {
             if (!entity.getTags().contains("Werewolf")) {
                 //Get all nearby Villagers and check if we have a Werewolf Villager...
-                List<Villager> villagerList = entity.level.getEntitiesOfClass(Villager.class, entity.getBoundingBox().inflate(20));
+                List<Villager> villagerList = entity.level.getEntitiesOfClass(Villager.class, entity.getBoundingBox().inflate(30));
                 if (!villagerList.isEmpty()) {
-                    for (int i = 0; i < villagerList.size(); i++) {
-                        Villager villager = villagerList.get(i);
+                    for (Villager villager : villagerList) {
                         if (villager.getTags().contains("Werewolf")) {
                             //If we do find a Werewolf Villager...
                             int bloodthirstStacksOriginal;
@@ -97,30 +94,38 @@ public class ServerEvents {
                             villager.addEffect(new MobEffectInstance(SMEffects.BLOODTHIRST.get(), 2147483647, bloodthirstStacksNew, false, false));
                             //Send a message to player if Bloodthirst just exceeded a certain threshold...
                             String sendMessage = null;
-                            //ToDo: play sound
+                            Entity updatedSource = event.getSource().getEntity();
                             if (bloodthirstStacksOriginal < 3 && bloodthirstStacksNew >= 3) {
                                 sendMessage = "sniffitysmobs.bloodthirst.message.3";
+                                updatedSource.level.playSound(null, updatedSource.position().x, updatedSource.position().y, updatedSource.position().z, SMSoundEvents.ENTITY_WEREWOLF_VILLAGER1.get(), SoundSource.HOSTILE, 2, 1);
                             }
                             if (bloodthirstStacksOriginal < 7 && bloodthirstStacksNew >= 7) {
                                 sendMessage = "sniffitysmobs.bloodthirst.message.7";
+                                updatedSource.level.playSound(null, updatedSource.position().x, updatedSource.position().y, updatedSource.position().z, SMSoundEvents.ENTITY_WEREWOLF_VILLAGER2.get(), SoundSource.HOSTILE, 2, 1);
                             }
-                            //Only play this warning message if it's not night yet, else directly transform...
-                            if (bloodthirstStacksOriginal < 10 && bloodthirstStacksNew >= 10 && !(villager.level.getGameTime() >13000 && villager.level.getGameTime() < 23500)) {
-                                sendMessage = "sniffitysmobs.bloodthirst.message.10";
+                            //Only send this warning message if it's not night yet, else directly transform and send corresponding message...
+                            if (bloodthirstStacksOriginal < 10 && bloodthirstStacksNew >= 10) {
+                                if (!(villager.level.getDayTime() > 13000 && villager.level.getDayTime() < 23500)) {
+                                    sendMessage = "sniffitysmobs.bloodthirst.message.10";
+                                    updatedSource.level.playSound(null, updatedSource.position().x, updatedSource.position().y, updatedSource.position().z, SMSoundEvents.ENTITY_WEREWOLF_VILLAGER3.get(), SoundSource.HOSTILE, 2, 1);
+                                } else {
+                                    //ToDo: Handle Werewolf transform sound elsewhere
+                                    sendMessage = "sniffitysmobs.werewolf.transform";
+                                }
                             }
                             if (sendMessage != null) {
                                 List<Player> playerList = entity.level.getEntitiesOfClass(Player.class, entity.getBoundingBox().inflate(20));
                                 if (!playerList.isEmpty()) {
-                                    for (int j = 0; j < playerList.size(); j++) {
-                                        playerList.get(j).sendMessage(new TranslatableComponent(sendMessage), entity.getUUID());
+                                    for (Player player : playerList) {
+                                        player.sendMessage(new TranslatableComponent(sendMessage), entity.getUUID());
                                     }
                                 }
                             }
-                            System.out.println("Set bloodthirst stacks to: "+bloodthirstStacksNew+
+                            System.out.println("Set bloodthirst stacks to: " + bloodthirstStacksNew +
                                     " for Werewolf Villager at:"
-                                    +" X: "+villager.position().x
-                                    +" Y: "+villager.position().y
-                                    +" Z: "+villager.position().z);
+                                    + " X: " + villager.position().x
+                                    + " Y: " + villager.position().y
+                                    + " Z: " + villager.position().z);
                             break;
                         }
                     }
