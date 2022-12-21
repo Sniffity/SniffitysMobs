@@ -12,5 +12,8 @@
   "sniffitysmobs.werewolf.transform": "It comes for you...",
   "sniffitysmobs.subtitle.werewolf.villager1": "Distant snarling...",
   "sniffitysmobs.subtitle.werewolf.villager2": "Distant growling...",
-  "sniffitysmobs.subtitle.werewolf.villager3": "Distant howling..."
+  "sniffitysmobs.subtitle.werewolf.villager3": "Distant howling...",
+  "item.sniffitysmobs.silver_needle": "Silver Needle",
+  "item.sniffitysmobs.silver_needle.text.1": "Used to check for hidden monsters...",
+  "item.sniffitysmobs.silver_needle.text.2": "A simple prick will coerce the creature into revealing itself..."
 }

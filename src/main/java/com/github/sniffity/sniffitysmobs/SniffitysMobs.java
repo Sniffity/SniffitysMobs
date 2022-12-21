@@ -36,7 +36,7 @@ public class SniffitysMobs
     //Health < 25% or dying
     //Bloodthirst > 10 stacks && moon
 
-
+    //ToDo: Transform - hide with particle effect
 
 
     //ToDo: If Werewolf is transformed, handle stacks on Werewolf Entity....

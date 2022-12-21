@@ -1,6 +1,7 @@
 package com.github.sniffity.sniffitysmobs.registry;
 
 import com.github.sniffity.sniffitysmobs.SniffitysMobs;
+import com.github.sniffity.sniffitysmobs.item.ItemSilverNeedle;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -10,5 +11,5 @@ public class SMItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SniffitysMobs.MODID);
 
     public static final RegistryObject<Item> SILVER_NEEDLE = ITEMS.register("silver_needle",
-            () -> new Item(new Item.Properties().tab(SMItemGroup.GROUP)));
+            () -> new ItemSilverNeedle(new Item.Properties().tab(SMItemGroup.GROUP)));
 }
