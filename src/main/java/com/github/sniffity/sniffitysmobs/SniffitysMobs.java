@@ -24,17 +24,17 @@ public class SniffitysMobs
         //ToDo: set NBT to true in structure file
         //ToDo: Loot? Books, etc?
 
-    //ToDo: Silver needle item
-        //ToDo: Tooltip
-        //ToDo: Recipe
-
     //ToDo: Add Entity, placeholder...
+        //Add model stuff, etc...
+
+    //ToDo: Boss bar + bloodthirst stacks
 
     //ToDo: transform conditions --
     //Hit with silver needle
     //Hit with silver arrow
     //Health < 25% or dying
     //Bloodthirst > 10 stacks && moon
+        //Pass in biomes, set texture variants
 
     //ToDo: Transform - hide with particle effect
 
@@ -59,6 +59,7 @@ public class SniffitysMobs
         SMBlocks.BLOCKS.register(modBus);
         SMEffects.EFFECTS.register(modBus);
         SMSoundEvents.SOUND_EVENTS.register(modBus);
+        SMEntityTypes.ENTITY_TYPES.register(modBus);
 
         GeckoLib.initialize();
         forgeBus.register(this);

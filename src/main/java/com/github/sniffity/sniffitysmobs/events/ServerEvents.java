@@ -2,7 +2,9 @@ package com.github.sniffity.sniffitysmobs.events;
 
 import com.github.sniffity.sniffitysmobs.entity.ai.goal.GoalAvoidWerewolfVillager;
 import com.github.sniffity.sniffitysmobs.entity.ai.goal.GoalLookAtWerewolfVillager;
+import com.github.sniffity.sniffitysmobs.entity.creature.EntityWerewolf;
 import com.github.sniffity.sniffitysmobs.registry.SMEffects;
+import com.github.sniffity.sniffitysmobs.registry.SMEntityTypes;
 import com.github.sniffity.sniffitysmobs.registry.SMItems;
 import com.github.sniffity.sniffitysmobs.registry.SMSoundEvents;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -16,6 +18,7 @@ import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,6 +31,7 @@ public class ServerEvents {
     public static void setup() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+        modBus.addListener(ServerEvents::registerEntityAttributes);
 
         forgeBus.addListener(ServerEvents::onJoinWorld);
         forgeBus.addListener(ServerEvents::onLivingHurt);
@@ -37,11 +41,15 @@ public class ServerEvents {
     //       Mod Bus
     // ====================
 
+    private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(SMEntityTypes.WEREWOLF.get(), EntityWerewolf.werewolfAttributes().build());
+    }
+
     // =====================
     //      Forge Bus
     // =====================
 
-    public static void onJoinWorld(EntityJoinWorldEvent event) {
+    private static void onJoinWorld(EntityJoinWorldEvent event) {
         Entity entity = event.getEntity();
         //Get Wolves to look at Werewolf Villagers
         if (entity instanceof Wolf) {

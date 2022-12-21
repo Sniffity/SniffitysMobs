@@ -74,6 +74,7 @@ public final class SMServerConfig {
                 this.wolfShrineSpawnWeightSnowy = builder.comment("Spawn Weight for Wolf Shrines in Snowy Villages")
                         .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_snowy")
                         .defineInRange("spawn_weight_wolf_shrine_snowy", 1,1,150);
+                this.attributes = new Attributes(builder,150,10);
                 builder.pop();
             }
 
@@ -84,6 +85,24 @@ public final class SMServerConfig {
             public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightDesert;
             public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightSnowy;
             public final ForgeConfigSpec.BooleanValue forceMinWolfShrine;
+            public final Attributes attributes;
         }
     }
+
+    public static class Attributes {
+        Attributes(final ForgeConfigSpec.Builder builder, float entityHealth, float entityAttack) {
+            builder.push("combat_config");
+            this.entityHealth = builder.comment("Set entity's health to this value")
+                    .translation(LANG_PREFIX + "health_value")
+                    .defineInRange("health_value", entityHealth, 0d, Double.MAX_VALUE);
+            this.entityAttack = builder.comment("Set entity's attack damage to this value")
+                    .translation(LANG_PREFIX + "attack_value")
+                    .defineInRange("attack_value", entityAttack, 0d, Double.MAX_VALUE);
+            builder.pop();
+        }
+        public final ForgeConfigSpec.DoubleValue entityHealth;
+        public final ForgeConfigSpec.DoubleValue entityAttack;
+    }
+
+
 }
