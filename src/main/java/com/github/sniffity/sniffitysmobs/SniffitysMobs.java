@@ -24,13 +24,9 @@ public class SniffitysMobs
         //ToDo: set NBT to true in structure file
         //ToDo: Loot? Books, etc?
 
-    //ToDo: Event to add bloodthirst counter
-        //ToDo: Villager damage +1, Villager Poke +2, Villager death +4
-        //ToDo: Message on bloodthirst reaching a threshold + sound
-
     //ToDo: Silver needle item
-    //ToDo: Tooltip
-    //ToDo: Recipe
+        //ToDo: Tooltip
+        //ToDo: Recipe
 
     //ToDo: Add Entity, placeholder...
 
