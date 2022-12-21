@@ -9,7 +9,7 @@ public class SMItemGroup {
     public static final CreativeModeTab GROUP = new CreativeModeTab("group_sm") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Items.FLINT_AND_STEEL);
+            return new ItemStack(SMItems.SM_ICON.get());
         }
     };
 }
