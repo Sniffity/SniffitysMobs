@@ -28,19 +28,28 @@ public class SniffitysMobs
         //ToDo: Loot? Books, etc?
 
 
-    //ToDo: Bloodthirst effect, add to Villagers
-    //ToDo: Silver poker item
-        //ToDo: Tooltip
     //ToDo: Event to add bloodthirst counter
         //ToDo: Villager damage +1, Villager Poke +2, Villager death +4
-        //ToDo
-    //ToDo: Message on bloodthirst reaching a threshold + sound
+        //ToDo: Message on bloodthirst reaching a threshold + sound
 
-    //ToDo: transform conditions
-        //Bloodthirst > 10 stacks && moon
-        //Health < 25%
-        //Hit with silver arrow
-        //Hit with silver poker
+    //ToDo: transform conditions --
+    //Hit with silver needle
+    //Hit with silver arrow
+    //Health < 25% or dying
+    //Bloodthirst > 10 stacks && moon
+
+
+    //ToDo
+
+    //ToDo: Silver poker item
+        //ToDo: Tooltip
+        //ToDo: Recipe
+
+    //ToDo: If Werewolf is transformed, handle stacks on Werewolf Entity....
+
+
+
+
 
     //ToDo: Boss bar, displays Bloodthirst stacks
     public static final String MODID = "sniffitysmobs";

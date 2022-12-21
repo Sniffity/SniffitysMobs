@@ -5,5 +5,8 @@
   "item.sniffitysmobs.wolf_statue": "Wolf Statue",
   "block.sniffitysmobs.wolfsbane": "Wolfsbane",
   "item.sniffitysmobs.wolfsbane": "Wolfsbane",
-  "effect.panthalassa.bloodthirst": "Bloodrthirst"
+  "effect.panthalassa.bloodthirst": "Bloodrthirst",
+  "sniffitysmobs.bloodthirst.message.3": "As the Villager takes damage, you feel an ominous presence becoming stronger...",
+  "sniffitysmobs.bloodthirst.message.7": "Be careful... Something is watching... You can feel it closer now... Stronger, even...",
+  "sniffitysmobs.bloodthirst.message.10": "Tonight, it comes for you..."
 }

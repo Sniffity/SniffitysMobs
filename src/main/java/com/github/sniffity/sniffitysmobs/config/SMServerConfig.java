@@ -59,9 +59,6 @@ public final class SMServerConfig {
                 this.forceMinWolfShrine = builder.comment("Whether to force at least one Wolf Shrine per village")
                         .translation(LANG_PREFIX + "force_min_wolfshrine")
                         .define("force_min_wolfshrine", false);
-                this.forceMaxWolfShrine = builder.comment("Whether to force at most one Wolf Shrine per village")
-                        .translation(LANG_PREFIX + "force_max_wolfshrine")
-                        .define("force_max_wolfshrine", true);
                 this.wolfShrineSpawnWeightPlains = builder.comment("Spawn Weight for Wolf Shrines in Plains Villages")
                         .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_plains")
                         .defineInRange("spawn_weight_wolf_shrine_plains", 1,1,150);
@@ -87,8 +84,6 @@ public final class SMServerConfig {
             public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightDesert;
             public final ForgeConfigSpec.IntValue wolfShrineSpawnWeightSnowy;
             public final ForgeConfigSpec.BooleanValue forceMinWolfShrine;
-            public final ForgeConfigSpec.BooleanValue forceMaxWolfShrine;
-
         }
     }
 }

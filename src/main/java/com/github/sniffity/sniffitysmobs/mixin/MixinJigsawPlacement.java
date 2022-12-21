@@ -29,7 +29,7 @@ public class MixinJigsawPlacement {
         boolean hasWolfShrine = pieces.stream()
                 .map(piece -> ((PoolElementStructurePiece) piece).getElement().toString())
                 .anyMatch(pieceName -> pieceName.contains("sniffitysmobs:") && pieceName.contains("/wolf_shrine"));
-        if (hasWolfShrine && SMServerConfig.SERVER.ENTITIES.WEREWOLF.forceMaxWolfShrine.get()) {
+        if (hasWolfShrine) {
             return pool.getShuffledTemplates(rand).stream().filter(piece -> {
                 String pieceName = piece.toString();
                 return !pieceName.contains("sniffitysmobs:") || !pieceName.contains("/wolf_shrine");
