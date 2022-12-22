@@ -64,7 +64,7 @@ public final class SMServerConfig {
                         .defineInRange("spawn_weight_wolf_shrine_plains", 1,1,150);
                 this.wolfShrineSpawnWeightTaiga = builder.comment("Spawn Weight for Wolf Shrines in Taiga Villages")
                         .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_taiga")
-                        .defineInRange("spawn_weight_wolf_shrine_taiga", 140,1,150);
+                        .defineInRange("spawn_weight_wolf_shrine_taiga", 1,1,150);
                 this.wolfShrineSpawnWeightSavanna = builder.comment("Spawn Weight for Wolf Shrines in Savanna Villages")
                         .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_savanna")
                         .defineInRange("spawn_weight_wolf_shrine_savanna", 1,1,150);
@@ -74,7 +74,7 @@ public final class SMServerConfig {
                 this.wolfShrineSpawnWeightSnowy = builder.comment("Spawn Weight for Wolf Shrines in Snowy Villages")
                         .translation(LANG_PREFIX + "spawn_weight_wolf_shrine_snowy")
                         .defineInRange("spawn_weight_wolf_shrine_snowy", 1,1,150);
-                this.attributes = new Attributes(builder,150,10);
+                this.attributes = new Attributes(builder,250,10);
                 builder.pop();
             }
 
