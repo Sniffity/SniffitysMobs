@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "sniffityscreatures:block/wolfsbane_bottom"
+    },
+    "half=upper": {
+      "model": "sniffityscreatures:block/wolfsbane_top"
+    }
+  }
+}

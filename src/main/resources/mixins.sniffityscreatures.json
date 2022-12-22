@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.github.sniffity.sniffityscreatures.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "mixins.sniffityscreatures.refmap.json",
+  "mixins": [
+    "MixinJigsawPlacement",
+    "MixinSingleJigsawAccess"
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

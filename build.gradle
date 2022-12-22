@@ -17,7 +17,7 @@ apply plugin: "org.spongepowered.mixin"
 
 
 version = "${mod_version}-${minecraft_version}"
-group = 'com.github.sniffity.sniffitysmobs'
+group = 'com.github.sniffity.sniffityscreatures'
 archivesBaseName = "${mod_id}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -51,7 +51,7 @@ minecraft {
             args '--username', 'DevSniffity'
             property 'forge.enabledGameTestNamespaces', 'examplemod'
             mods {
-                snifftysmobs {
+                sniffityscreatures {
                     source sourceSets.main
                 }
             }
@@ -61,7 +61,7 @@ minecraft {
             workingDirectory project.file('run')
             args '--username', 'DevSniffity'
             mods {
-                sniffitysmobs {
+                sniffityscreatures {
                     source sourceSets.main
                 }
             }
@@ -69,9 +69,9 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-            args '--mod', 'sniffitysmobs', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'sniffityscreatures', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
-                sniffitysmobs {
+                sniffityscreatures {
                     source sourceSets.main
                 }
             }
@@ -106,18 +106,17 @@ processResources {
 }
 
 mixin {
-    add sourceSets.main, 'mixins.sniffitysmobs.refmap.json'
-    config 'mixins.sniffitysmobs.json'
-    debug.verbose = true
+    add sourceSets.main, 'mixins.sniffityscreatures.refmap.json'
+    config 'mixins.sniffityscreatures.json'
 }
 
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "Sniffity's Mods",
+                "Specification-Title"     : "Sniffity's Creatures",
                 "Specification-Vendor"    : "Sniffity",
                 "Specification-Version"   : "1",
-                "Implementation-Title"    : "sniffitysmobs",
+                "Implementation-Title"    : "sniffityscreatures",
                 "Implementation-Version"  : "${mod_version}",
                 "Implementation-Vendor"   : "Sniffity",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")

@@ -1,0 +1,28 @@
+{
+  "itemGroup.group_sniffitys_creatures": "Sniffity's Creatures",
+  "item.sniffityscreatures.sm_icon": "Sniffity's Creatures Icon",
+
+  "block.sniffityscreatures.wolf_statue": "Wolf Statue",
+  "item.sniffityscreatures.wolf_statue": "Wolf Statue",
+
+  "block.sniffityscreatures.wolfsbane": "Wolfsbane",
+  "item.sniffityscreatures.wolfsbane": "Wolfsbane",
+
+  "effect.panthalassa.bloodthirst": "Bloodrthirst",
+
+  "sniffityscreatures.bloodthirst.message.3": "As the Villager takes damage, you feel an ominous presence becoming stronger...",
+  "sniffityscreatures.bloodthirst.message.7": "Be careful... Something is watching... You can feel it closer now... Stronger, even...",
+  "sniffityscreatures.bloodthirst.message.10": "Tonight, it comes for you...",
+  "sniffityscreatures.werewolf.transform": "It comes for you...",
+
+  "sniffityscreatures.subtitle.werewolf.villager1": "Distant snarling...",
+  "sniffityscreatures.subtitle.werewolf.villager2": "Distant growling...",
+  "sniffityscreatures.subtitle.werewolf.villager3": "Distant howling...",
+
+  "item.sniffityscreatures.silver_needle": "Silver Needle",
+  "item.sniffityscreatures.silver_needle.text.1": "Used to check for hidden monsters...",
+  "item.sniffityscreatures.silver_needle.text.2": "A simple prick will coerce the creature into revealing itself...",
+
+  "entity.sniffityscreatures.werewolf": "Werewolf",
+  "item.sniffityscreatures.werewolf_spawn_egg": "Werewolf Spawn Egg"
+}

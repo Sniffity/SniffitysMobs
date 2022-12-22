@@ -1,0 +1,14 @@
+{
+  "werewolf.villager1": {
+      "sounds": [ "sniffityscreatures:entity/werewolf/villager1" ],
+      "subtitle": "sniffityscreatures.subtitle.werewolf.villager1"
+  },
+  "werewolf.villager2": {
+    "sounds": [ "sniffityscreatures:entity/werewolf/villager2" ],
+    "subtitle": "sniffityscreatures.subtitle.werewolf.villager2"
+  },
+  "werewolf.villager3": {
+    "sounds": [ "sniffityscreatures:entity/werewolf/villager3" ],
+    "subtitle": "sniffityscreatures.subtitle.werewolf.villager3"
+  }
+}
