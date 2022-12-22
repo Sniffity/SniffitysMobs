@@ -1,8 +1,14 @@
 package com.github.sniffity.sniffitysmobs.entity.creature;
 
+import com.github.sniffity.sniffitysmobs.entity.creature.utils.SMBossEvent;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.level.Level;
@@ -16,9 +22,12 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
+import javax.annotation.Nullable;
+
 public abstract class SMEntity extends PathfinderMob implements IAnimatable {
 
     protected static int IDLE_ANIMATION_VARIANTS;
+    private final SMBossEvent bossEvent = new SMBossEvent(this);
 
     public SMEntity(EntityType<? extends SMEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -130,6 +139,21 @@ public abstract class SMEntity extends PathfinderMob implements IAnimatable {
         super.defineSynchedData();
     }
 
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+    }
+
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        if (this.hasCustomName()) {
+            this.bossEvent.setName(this.getDisplayName());
+        }
+
+    }
+
     public String getAnimation()
     {
         return entityData.get(ANIMATION);
@@ -148,4 +172,49 @@ public abstract class SMEntity extends PathfinderMob implements IAnimatable {
     {
         entityData.set(ANIMATION_TYPE, animation);
     }
+
+    public boolean hasBossBar() {
+        return false;
+    }
+
+    public BossEvent.BossBarColor bossBarColor() {
+        return BossEvent.BossBarColor.PURPLE;
+    }
+
+    @Override
+    public void tick(){
+        if (tickCount % 5 == 0) {
+            bossEvent.update();
+        }
+
+        super.tick();
+    }
+
+    @Override
+    public void die(DamageSource cause) {
+        super.die(cause);
+        if (!this.isRemoved()) {
+            bossEvent.update();
+        }
+    }
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer player) {
+        super.startSeenByPlayer(player);
+        this.bossEvent.addPlayer(player);
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer player) {
+        super.stopSeenByPlayer(player);
+        this.bossEvent.removePlayer(player);
+    }
+
+    @Override
+    public void setCustomName(@Nullable Component pName) {
+        super.setCustomName(pName);
+        this.bossEvent.setName(this.getDisplayName());
+    }
 }
+
+

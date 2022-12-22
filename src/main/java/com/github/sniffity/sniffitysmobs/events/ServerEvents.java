@@ -1,7 +1,7 @@
 package com.github.sniffity.sniffitysmobs.events;
 
-import com.github.sniffity.sniffitysmobs.entity.ai.goal.GoalAvoidWerewolfVillager;
-import com.github.sniffity.sniffitysmobs.entity.ai.goal.GoalLookAtWerewolfVillager;
+import com.github.sniffity.sniffitysmobs.entity.creature.ai.goal.GoalAvoidWerewolfVillager;
+import com.github.sniffity.sniffitysmobs.entity.creature.ai.goal.GoalLookAtWerewolfVillager;
 import com.github.sniffity.sniffitysmobs.entity.creature.EntityWerewolf;
 import com.github.sniffity.sniffitysmobs.registry.SMEffects;
 import com.github.sniffity.sniffitysmobs.registry.SMEntityTypes;

@@ -24,11 +24,6 @@ public class SniffitysMobs
         //ToDo: set NBT to true in structure file
         //ToDo: Loot? Books, etc?
 
-    //ToDo: Add Entity, placeholder...
-        //Add model stuff, etc...
-
-    //ToDo: Boss bar + bloodthirst stacks
-
     //ToDo: transform conditions --
     //Hit with silver needle
     //Hit with silver arrow
@@ -37,11 +32,19 @@ public class SniffitysMobs
         //Pass in biomes, set texture variants
 
     //ToDo: Transform - hide with particle effect
-
+            //ToDo: transform if bloodthirst stacks = null, pass in -1
 
     //ToDo: If Werewolf is transformed, handle stacks on Werewolf Entity....
         //ToDo: handle transform sound on FinalizeSpawn
-    //ToDo: Boss bar, displays Bloodthirst stacks
+        //ToDo: AttackGoal + whole werewolf logic
+
+
+    //ToDo: test config options
+
+
+    //ToDo: Gargoyles?
+
+
     public static final String MODID = "sniffitysmobs";
     private static final Logger LOGGER = LogUtils.getLogger();
     public SniffitysMobs()

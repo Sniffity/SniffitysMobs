@@ -6,6 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
 
-public class EntityWerewolf extends SMEntity {
+public class EntityWerewolf extends SMEntity  {
     protected static final EntityDataAccessor<Integer> BLOODTHIRST_STACKS = SynchedEntityData.defineId(EntityWerewolf.class, EntityDataSerializers.INT);
     protected static final EntityDataAccessor<Integer> TEXTURE_VARIANT = SynchedEntityData.defineId(EntityWerewolf.class, EntityDataSerializers.INT);
 
@@ -26,7 +27,7 @@ public class EntityWerewolf extends SMEntity {
 
     public EntityWerewolf(EntityType<? extends SMEntity> type, Level worldIn, int bloodthirstStacks, int textureVariant) {
         super(type, worldIn);
-        setBloodthirstStacks(bloodthirstStacks);
+        setBloodthirstStacks(bloodthirstStacks+1);
         setTextureVariant(textureVariant);
     }
 
@@ -41,7 +42,6 @@ public class EntityWerewolf extends SMEntity {
         this.entityData.define(TEXTURE_VARIANT, 0);
         super.defineSynchedData();
     }
-
 
     public int getBloodthirstStacks() {
         return entityData.get(BLOODTHIRST_STACKS);
@@ -63,6 +63,7 @@ public class EntityWerewolf extends SMEntity {
     @Override
     public SpawnGroupData finalizeSpawn(@NotNull ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @javax.annotation.Nullable SpawnGroupData data, @javax.annotation.Nullable CompoundTag dataTag)
     {
+        //ToDo: play sound
         if (getBloodthirstStacks() > 0) {
             this.addEffect(new MobEffectInstance(SMEffects.BLOODTHIRST.get(),2147483647, getBloodthirstStacks(),false,false));
         }
@@ -78,6 +79,17 @@ public class EntityWerewolf extends SMEntity {
                 .add(Attributes.MAX_HEALTH, SMServerConfig.SERVER.ENTITIES.WEREWOLF.attributes.entityHealth.get())
                 .add(Attributes.MOVEMENT_SPEED, 1.5F);
     }
+
+    @Override
+    public boolean hasBossBar() {
+        return true;
+    }
+
+    @Override
+    public BossEvent.BossBarColor bossBarColor() {
+        return BossEvent.BossBarColor.BLUE;
+    }
+
 }
 
 
