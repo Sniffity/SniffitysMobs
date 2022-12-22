@@ -24,12 +24,16 @@ public class SniffitysMobs
         //ToDo: set NBT to true in structure file
         //ToDo: Loot? Books, etc?
 
+    //ToDo: silver arrows
+
     //ToDo: transform conditions --
     //Hit with silver needle
     //Hit with silver arrow
     //Health < 25% or dying
     //Bloodthirst > 10 stacks && moon
         //Pass in biomes, set texture variants
+
+    //ToDo: Cancel iron golem aggro if hit with silver needle
 
     //ToDo: Transform - hide with particle effect
             //ToDo: transform if bloodthirst stacks = null, pass in -1
