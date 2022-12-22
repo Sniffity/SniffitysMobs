@@ -1,10 +1,9 @@
-package com.github.sniffity.sniffitysmobs.entity.ai.goal;
+package com.github.sniffity.sniffitysmobs.entity.creature.ai.goal;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.npc.Villager;
-import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 import java.util.Set;

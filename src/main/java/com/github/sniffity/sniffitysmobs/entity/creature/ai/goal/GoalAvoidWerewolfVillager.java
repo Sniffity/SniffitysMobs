@@ -1,4 +1,4 @@
-package com.github.sniffity.sniffitysmobs.entity.ai.goal;
+package com.github.sniffity.sniffitysmobs.entity.creature.ai.goal;
 
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
