@@ -23,16 +23,10 @@ public class SniffitysCreatures
 
 
     //ToDo: Wolf Shrine Structures
-        //ToDo: set NBT to true in structure file
-        // ToDo: Loot? Books, etc?
-
-
-    //ToDo: Exclude child villagers
-    //ToDo: Advancement on Wolf Statue
+        //ToDo: Advancement on Wolf Statue
 
     //ToDo: silver arrows
 
-    //ToDo: Debug statements
 
     //ToDo: transform conditions --
     //Hit with silver needle
@@ -54,6 +48,7 @@ public class SniffitysCreatures
 
     //ToDo: test config options
 
+    //ToDo: Debug statements - remove
 
     //ToDo: Gargoyles?
 
