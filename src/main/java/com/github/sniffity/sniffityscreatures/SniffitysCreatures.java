@@ -20,11 +20,19 @@ import software.bernie.geckolib3.GeckoLib;
 public class SniffitysCreatures
 {
     //ToDo: Logo + packmcmeta
+
+
     //ToDo: Wolf Shrine Structures
         //ToDo: set NBT to true in structure file
-        //ToDo: Loot? Books, etc?
+        // ToDo: Loot? Books, etc?
+
+
+    //ToDo: Exclude child villagers
+    //ToDo: Advancement on Wolf Statue
 
     //ToDo: silver arrows
+
+    //ToDo: Debug statements
 
     //ToDo: transform conditions --
     //Hit with silver needle
@@ -34,6 +42,7 @@ public class SniffitysCreatures
         //Pass in biomes, set texture variants
 
     //ToDo: Cancel iron golem aggro if hit with silver needle
+
 
     //ToDo: Transform - hide with particle effect
             //ToDo: transform if bloodthirst stacks = null, pass in -1
