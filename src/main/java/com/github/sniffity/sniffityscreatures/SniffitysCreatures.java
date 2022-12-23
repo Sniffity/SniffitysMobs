@@ -63,8 +63,6 @@ public class SniffitysCreatures
         ClientEvents.setup();
         ServerEvents.setup();
 
-        modBus.addListener(this::commonSetup);
-
         SCItems.ITEMS.register(modBus);
         SCBlockEntities.BLOCK_ENTITIES.register(modBus);
         SCBlocks.BLOCKS.register(modBus);
@@ -77,13 +75,6 @@ public class SniffitysCreatures
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SMServerConfig.SERVER_CONFIG, "sniffityscreatures-server-config.toml");
 
+        MinecraftForge.EVENT_BUS.addListener(WolfShrineWorldgen::setupVillageWorldGen);
     }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            WolfShrineWorldgen.setupVillageWorldGen();
-        });
-    }
-
-
 }
