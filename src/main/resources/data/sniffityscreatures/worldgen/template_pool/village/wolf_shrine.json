@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "sniffityscreatures:village/wolf_shrine0",
+        "location": "sniffityscreatures:village/wolf_shrine_top_0",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "sniffityscreatures:village/wolf_shrine1",
+        "location": "sniffityscreatures:village/wolf_shrine_top_1",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
@@ -21,13 +21,13 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "sniffityscreatures:village/wolf_shrine2",
+        "location": "sniffityscreatures:village/wolf_shrine_top_2",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
       "weight": 1
     }
   ],
-  "fallback": "minecraft:empty",
+  "fallback": "sniffityscreatures:village/wolf_shrine",
   "name": "sniffityscreatures:village/wolf_shrine"
 }

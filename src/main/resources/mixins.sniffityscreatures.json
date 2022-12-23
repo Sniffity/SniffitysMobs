@@ -6,8 +6,7 @@
   "refmap": "mixins.sniffityscreatures.refmap.json",
   "mixins": [
     "MixinJigsawPlacement",
-    "MixinSingleJigsawAccess"
-
+    "StructureTemplatePoolAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

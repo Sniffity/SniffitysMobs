@@ -28,11 +28,11 @@ public class MixinJigsawPlacement {
     private List<StructurePoolElement> getShuffledTemplates(StructureTemplatePool pool, Random rand) {
         boolean hasWolfShrine = pieces.stream()
                 .map(piece -> ((PoolElementStructurePiece) piece).getElement().toString())
-                .anyMatch(pieceName -> pieceName.contains("sniffityscreatures:") && pieceName.contains("/wolf_shrine"));
+                .anyMatch(pieceName -> pieceName.contains("sniffityscreatures:") && pieceName.contains("/wolf_shrine_street"));
         if (hasWolfShrine) {
             return pool.getShuffledTemplates(rand).stream().filter(piece -> {
                 String pieceName = piece.toString();
-                return !pieceName.contains("sniffityscreatures:") || !pieceName.contains("/wolf_shrine");
+                return !pieceName.contains("sniffityscreatures:") || !pieceName.contains("/wolf_shrine_street");
             }).collect(Collectors.toList());
         } else if (SMServerConfig.SERVER.ENTITIES.WEREWOLF.forceMinWolfShrine.get()) {
             StructurePoolElement wolfsbane = null;
@@ -40,7 +40,7 @@ public class MixinJigsawPlacement {
             List<StructurePoolElement> result = new ArrayList<>();
             for (StructurePoolElement piece : original) {
                 String pieceName = piece.toString();
-                if (pieceName.contains("sniffityscreatures:") && pieceName.contains("/wolf_shrine")) {
+                if (pieceName.contains("sniffityscreatures:") && pieceName.contains("/wolf_shrine_street")) {
                     wolfsbane = piece;
                 } else {
                     result.add(piece);
