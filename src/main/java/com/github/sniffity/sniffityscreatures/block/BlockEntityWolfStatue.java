@@ -39,6 +39,14 @@ public class BlockEntityWolfStatue extends BlockEntity {
             if (pBlockEntity.getLevel() != null) {
                 List<Villager> villagerList = pBlockEntity.getLevel().getEntitiesOfClass(Villager.class,pBlockEntity.getRenderBoundingBox().inflate(20));
                 if (!villagerList.isEmpty()) {
+                    //remove Villager children from the list
+                    for (int i = 0; i < villagerList.size();i++) {
+                        Villager testVillager = villagerList.get(i);
+                        if (testVillager.getAge()<0) {
+                            villagerList.remove(testVillager);
+                        }
+                    }
+                    //add the Werewolf tag to a random Villager
                     Villager werewolf = villagerList.get(pBlockEntity.getLevel().getRandom().nextInt(villagerList.size()));{
                         werewolf.addTag("Werewolf");
                         System.out.println("Created a Werewolf at: "+"X: "+werewolf.position().x+" Y: "+werewolf.position().y+" Z: " + werewolf.position().z);
