@@ -32,13 +32,12 @@ public class WolfShrineWorldgen {
 
     public static void setupVillageWorldGen() {
         if (SMServerConfig.SERVER.ENTITIES.WEREWOLF.enableWerewolf.get()) {
-            for (int i = 0; i<3; i++){
-                addToPool(new ResourceLocation("village/plains/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_plains"+i), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightPlains.get());
-                addToPool(new ResourceLocation("village/taiga/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_taiga"+i), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightTaiga.get());
-                addToPool(new ResourceLocation("village/savanna/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_savanna"+i), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightSavanna.get());
-                addToPool(new ResourceLocation("village/desert/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_desert"+i), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightDesert.get());
-                addToPool(new ResourceLocation("village/snowy/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_snowy"+i), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightSnowy.get());
-            }
+            addToPool(new ResourceLocation("village/plains/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_plains"), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightPlains.get());
+            addToPool(new ResourceLocation("village/taiga/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_taiga"), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightTaiga.get());
+            addToPool(new ResourceLocation("village/savanna/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_savanna"), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightSavanna.get());
+            addToPool(new ResourceLocation("village/desert/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_desert"), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightDesert.get());
+            addToPool(new ResourceLocation("village/snowy/streets"),new ResourceLocation("sniffityscreatures", "village/wolf_shrine_snowy"), SMServerConfig.SERVER.ENTITIES.WEREWOLF.wolfShrineSpawnWeightSnowy.get());
+
         }
     }
 
